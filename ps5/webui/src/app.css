@@ -57,8 +57,11 @@
   html { font-size: 16px; font-size: clamp(14px, 0.35vw + 10px, 16px); -webkit-text-size-adjust: 100%; }
   html.tv { font-size: 20px; font-size: clamp(17px, 1.3vw, 26px); }
   html, body { margin: 0; background: var(--bg); color: var(--body);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI Variable Text", "Segoe UI", "SST", "SST Roman",
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC",
+      "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", "Segoe UI Variable Text", "Segoe UI", "SST", "SST Roman",
       "SST-Roman", Roboto, Helvetica, Arial, sans-serif; line-height: 1.47; -webkit-font-smoothing: antialiased; }
+  /* Hide the English source for a moment so Simplified Chinese does not flash in after it. */
+  html[data-lang="zh"]:not(.i18n-ready) body { visibility: hidden; }
   body { background: var(--bg) linear-gradient(180deg, var(--bg-glow) 0, var(--bg) 24rem) no-repeat; min-height: 100vh; }
   a { color: var(--accent-hi); text-decoration: none; }
   /* The PS5's own focus: a white frame around what the cursor is on. Kept

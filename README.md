@@ -3,6 +3,13 @@
 stable-diffusion.cpp on the PS5 GPU — a native title running ggml-vulkan on RADV, with an
 OpenAI/A1111-compatible image API, a browser UI and a TV dashboard.
 
+> **This fork** (`liangbannianikun-cmd/PS5SD`) is a third-party personal localization of
+> [Darkatek7/PS5SD](https://github.com/Darkatek7/PS5SD) v1.7.0. The web UI defaults to Simplified
+> Chinese, and the home-screen icon is DeepSeek's public whale mark on a square canvas. The program
+> name stays **PS5SD**. It is not a DeepSeek product and not an official PS5SD release. Authors, the
+> GPL-3.0 licence and the credits below are unchanged. Chinese install notes:
+> [docs/zh-CN/README.md](docs/zh-CN/README.md).
+
 > **Status: 1.7.0.** The title runs the server, the web UI, the model downloader and the TV dashboard
 > on the console. 0.2.0 added LoRAs; 0.3.0 several images per run, your own size buttons, a done sound
 > and a switch that keeps images and prompts off the TV; 0.3.1 an API key (for access from outside your

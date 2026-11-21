@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,6 +62,8 @@
     var h = document.documentElement;
     if (/PlayStation/i.test(navigator.userAgent || '')) h.className += ' tv';
     try {
+      if (localStorage.getItem('ps5sd.lang') === 'en') h.lang = 'en';
+      else h.setAttribute('data-lang', 'zh');
       var t = localStorage.getItem('ps5sd.theme');
       if (t === 'light' || t === 'dark') {
         h.setAttribute('data-theme', t);
@@ -507,6 +509,11 @@
   <div class="mcol">
     <section class="panel">
       <div class="ph"><h2>This browser</h2></div>
+      <div class="sublabel">Language</div>
+      <div class="mseg crange themes" id="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="zh" aria-pressed="true">简体中文</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
       <div class="sublabel">Theme</div>
       <div class="mseg crange themes" id="theme" role="group" aria-label="Theme">
         <button type="button" data-theme="auto" aria-pressed="false">Auto</button>
@@ -810,6 +817,8 @@
 
 <script>
 @@include js/00-start.js
+@@include js/00b-i18n.js
+@@include js/00c-i18n-dict.js
 @@include js/01-small-helpers.js
 @@include js/02-api-key.js
 @@include js/03-model-presets.js
@@ -828,6 +837,7 @@
 @@include js/10-controls.js
 @@include js/10b-create-layout.js
 @@include js/11-help.js
+@@include js/11b-docs-zh.js
 @@include js/12-gallery.js
 @@include js/12b-gallery-info.js
 @@include js/12c-viewer-zoom.js

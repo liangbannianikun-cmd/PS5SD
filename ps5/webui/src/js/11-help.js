@@ -175,13 +175,25 @@
       drawDoc(name);
       return;
     }
+    // Chinese help is carried in the page (11b-docs-zh.js). The installed
+    // overlay also stores the web UI in docs/API.md, which is not the API text.
+    if (uiLang() === 'zh' && typeof ZH_DOCS === 'object' && ZH_DOCS && ZH_DOCS[DOCS[name]]) {
+      docText[name] = ZH_DOCS[DOCS[name]];
+      drawDoc(name);
+      return;
+    }
     text($('doc'), 'Loading');
     var x = new XMLHttpRequest();
     x.open('GET', '/ps5sd/v1/app/docs/' + DOCS[name], true);
     x.onreadystatechange = function () {
       if (x.readyState !== 4) return;
-      if (x.status === 200) {
-        docText[name] = x.responseText;
+      var body = x.responseText || '';
+      var payload = body.indexOf('PS5SD-UI-PAYLOAD') >= 0;
+      if (x.status === 200 && !payload) {
+        docText[name] = body;
+        if (docName === name) drawDoc(name);
+      } else if (typeof EN_DOCS === 'object' && EN_DOCS && EN_DOCS[DOCS[name]]) {
+        docText[name] = EN_DOCS[DOCS[name]];
         if (docName === name) drawDoc(name);
       } else if (docName === name) {
         text($('doc'), 'This version of the PS5SD app does not carry its docs. They are on GitHub (link above).');

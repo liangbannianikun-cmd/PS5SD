@@ -41,6 +41,9 @@
   }
 
   function initAppearance() {
+    var lbs = $('lang') ? $('lang').getElementsByTagName('button') : [];
+    for (var j = 0; j < lbs.length; j++) lbs[j].onclick = function () { setLang(this.getAttribute('data-lang')); };
+    drawLang();
     var bs = $('theme').getElementsByTagName('button');
     for (var i = 0; i < bs.length; i++) bs[i].onclick = function () { setTheme(this.getAttribute('data-theme')); };
     drawTheme();
