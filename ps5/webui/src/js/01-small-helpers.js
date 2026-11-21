@@ -4,7 +4,10 @@
   function drop(key) { try { localStorage.removeItem('ps5sd.' + key); } catch (e) {} }
 
   function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
-  function text(node, value) { node.textContent = value; }
+  function text(node, value) {
+    if (!node) return;
+    node.textContent = tr(value);
+  }
   // An overlay (viewer, mask, preset editor, dialog, login) puts body.modal-open on: the page behind it
   // stays where it is (app.css).
   function show(id, on, how) {

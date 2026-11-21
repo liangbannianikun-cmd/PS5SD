@@ -1,0 +1,12 @@
+# name: Qwen-Image 2.1 Q4_K edit (experiment)
+# defaults: steps=20 cfg=6 width=512 height=512 sampler=euler
+--diffusion-model
+qwen_image_2.1-Q4_K.gguf
+--vae
+qwen_image_2.1_vae_bf16.safetensors
+--llm
+Qwen3VL-8B-Instruct-Q4_K_M.gguf
+--llm_vision
+mmproj-Qwen3VL-8B-Instruct-F16.gguf
+--model-args
+qwen_image_2_1_prefix_cache=false

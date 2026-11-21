@@ -33,6 +33,7 @@
 
   // The login first (when the server wants a key), then the page.
   function init() {
+    applyI18n();
     $('login-go').onclick = login;
     $('login-key').onkeydown = function (e) { e = e || window.event; if (e.keyCode === 13) { login(); return false; } return true; };
     keyFromAddress(function () { checkAuth(start); });

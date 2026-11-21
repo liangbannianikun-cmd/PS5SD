@@ -1,0 +1,20 @@
+DeepSeek icon used by this fork
+================================
+
+The whale mark is the official public file
+
+  https://github.com/deepseek-ai/awesome-deepseek-integration/blob/main/docs/_logo%20svg/ICON.svg
+  raw: https://raw.githubusercontent.com/deepseek-ai/awesome-deepseek-integration/main/docs/_logo%20svg/ICON.svg
+
+downloaded for this change. SHA-256 of that file (deepseek-ICON.svg in this
+folder):
+
+  b15083e3cbb398bd35619b758c43adc0a632efccc7e2d69f2481a860862910fe
+
+The path data and the fill #4d6bfe are unchanged. The PS5 home screen draws a
+512x512 BC7 texture (sce_sys/icon0.dds) and rounds the tile itself, so the mark
+is only placed, uniformly scaled, on a white square. It is not a redraw.
+
+This title is still named PS5SD. The icon does not make it a DeepSeek product.
+DeepSeek's own brand note (same repository, docs/_logo svg/guidelines.md) says
+the mark is for descriptive use and must not imply an official DeepSeek app.
