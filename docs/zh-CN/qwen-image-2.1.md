@@ -48,6 +48,16 @@ PS5SD 自己的 `sd_plan.cpp` 在权重里看到 `txt_in.text_norm.weight` 时�
 
 这只减少文档写明的那块缓存。**不能**据此认为 12.20 上一定出得了图。若 `app.log` 写内存不够，就停，不要加大到 1664（那是规划器里的上限，不是这台机器的测量）。官方示例里的 `--offload-to-cpu` 没有写进预设：这台程序的 CPU 堆很小，别的模型把 VAE 放到 CPU 上是放不下的。
 
+## 图像编辑要另加视觉权重
+
+文生图预设没有 `--llm_vision`。带参考图的编辑会在编码提示词前失败，日志里是 `Qwen Image 2.1 editing requires Qwen3-VL vision weights`，接着才是 `failed to encode prompt`。先去掉参考图、用原来的文生图预设，可以不重装就试纯文生图。
+
+编辑用另一份预设 `qwen-image-2.1-q4-edit.txt`，不替换文生图那份。视觉文件是官方仓库里的这一个，v1.7.0 的文档点名的是 F16，不是示例命令里的本地改名：
+
+`https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct-GGUF/resolve/main/mmproj-Qwen3VL-8B-Instruct-F16.gguf`
+
+HEAD 大小 1159029824 字节（约 1.08 GiB）。同目录还有 `mmproj-Qwen3VL-8B-Instruct-Q8_0.gguf`（752289728 字节）；这份预设按文档用 F16。网页把文件作为 Model 上传后，它在 `/data/PS5SD/models/mmproj-Qwen3VL-8B-Instruct-F16.gguf`。再上传编辑预设，对 **Qwen-Image 2.1 Q4_K edit (experiment)** 按 Use，然后才用 Edit。参考图的宽和高都要能被 32 整除。编辑比文生图多占视觉权重和一次图像编码，没有在 PS5 上测过。
+
 ## 预设解析
 
 已用 v1.7.0 的 `ModelLibrary::parse_preset` 在电脑上解析过这份文件（三个空文件只用来占名，没有权重）。三条路径都落到 models 目录，`--model-args` 没有被当成文件路径，没有 `--llm_vision`、没有 `-m`、没有 `--flow-shift`。这不是 PS5 上的加载测试。
